@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="css/splash.css" rel="stylesheet" />
+    <title>Splash screen</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body onload="demo();">
+    
+    <img id="background" src="Logo.jpg" alt="background" />
+       <div id="cholder">
+           
+          <canvas id="canvas"></canvas>
+    </div>
+    <script src="scripts/dist/rainyday.min.js"></script>
+    <script>
+        
+        
+
+
+        function demo() {
+            setTimeout(function () {
+                var element = document.getElementById('background');
+                var someDiv = document.getElementById('cholder');
+                var engine = new RainyDay({
+                    image:element,         // Image element
+                    // This value is required
+                      parentElement: someDiv, // Element to be used as a parent for the canvas
+                    // If not provided assuming the 'body' element
+                    //  crop: [0, 0, 50, 60],   // Coordinates if only a part of the image should be used
+                    // If not provided entire image will be used
+                    blur: 10,               // Defines blur due to rain effect
+                    // Assuming 10 if not provided
+                    // Use 0 value to disable the blur
+                    opacity: 1              // Opacity of rain drops
+                    // Assuming 1 if not provided
+                });
+                engine.rain(
+                    [
+                        [1, 0, 20],         // add 20 drops of size 1...
+                        [3, 3, 1]           // ... and 1 drop of size from 3 - 6 ...
+                    ],
+                    100);
+
+            },500)
+            
+}
+    </script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
